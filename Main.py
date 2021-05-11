@@ -15,7 +15,11 @@ class Main:
         zoradenie = (self.lineLen - textlen) // 2
         return self.riadokFarba + " " * zoradenie + text + " " * zoradenie + "‎"
     def line(self):
-        return self.riadokFarba + " " * self.lineLen + "‎"
+        return self.riadokFarba + " " * self.lineLen + "‎‎"
+
+    def lineleft(self, text):
+        spaces = self.lineLen - len(text)
+        return self.riadokFarba + text + " " * spaces + "‎"
     
     def test(self):
         print(self.line())
@@ -24,3 +28,6 @@ class Main:
         print(self.line())
         print(self.center("Created by @ Esec Team 2021"))
         print(self.line())
+    def choose(self):
+        print(self.lineleft("Choose which part you want to analyze:"))
+        hodnota = input("")
