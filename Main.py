@@ -1,3 +1,4 @@
+import colorama
 import psutil
 from colorama import init, Fore, Back
 class Main:
@@ -18,9 +19,10 @@ class Main:
         return self.riadokFarba + " " * self.lineLen + "‎‎"
 
     def lineleft(self, text):
+        forward = colorama.Cursor.FORWARD
         spaces = self.lineLen - len(text)
-        return self.riadokFarba + text + " " * spaces + "‎"
-    
+        return self.riadokFarba + text + forward() + " " * spaces + "‎"
+     
     def test(self):
         print(self.line())
         print(self.line())
@@ -28,6 +30,5 @@ class Main:
         print(self.line())
         print(self.center("Created by @ Esec Team 2021"))
         print(self.line())
-    def choose(self):
-        print(self.lineleft("Choose which part you want to analyze:"))
-        hodnota = input("")
+    
+        hodnota = input(self.lineleft("Choose which part you want to analyze:")) 
