@@ -8,7 +8,7 @@ class Main:
         self.lineLen = 100
         self.bcgColor = Back.LIGHTBLACK_EX
         self.txtColor = Fore.LIGHTWHITE_EX
-        self.riadokFarba = Back.LIGHTCYAN_EX
+        self.riadokFarba = Back.LIGHTMAGENTA_EX
     def center(self, text):
         textlen = len(text)
         if textlen %2 != 0:
@@ -19,10 +19,12 @@ class Main:
         return self.riadokFarba + " " * self.lineLen + "‎‎"
 
     def lineleft(self, text):
-        forward = colorama.Cursor.FORWARD
+        return self.riadokFarba + text    
+
+    def options(self, text):
         spaces = self.lineLen - len(text)
-        return self.riadokFarba + text + forward() + " " * spaces + "‎"
-     
+        return self.riadokFarba + text + " " * spaces + "‎"
+
     def test(self):
         print(self.line())
         print(self.line())
@@ -31,4 +33,13 @@ class Main:
         print(self.center("Created by @ Esec Team 2021"))
         print(self.line())
     
-        hodnota = input(self.lineleft("Choose which part you want to analyze:")) 
+    def choose(self):
+        print(self.options("Press 1 for analyzing CPU"))
+        print(self.options("Press 2 for analyzing Memory"))
+        print(self.options("Press 3 for analyzing Disks"))
+
+        choice = input(self.lineleft("Choose which part you want to analyze:")) 
+
+        if choice == "1":
+            print("You have chosen the CPU")
+
