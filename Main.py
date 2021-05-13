@@ -40,6 +40,7 @@ class Main:
         print(self.column("Press 1 for analyzing CPU"))
         print(self.column("Press 2 for analyzing Memory"))
         print(self.column("Press 3 for analyzing Disks"))
+        print(self.column("Press 4 for analyzing Network"))
 
         choice = input(self.lineleft("Choose which part you want to analyze:")) 
         print(self.column(" "))
@@ -67,20 +68,10 @@ class Main:
         
         elif choice == "2":
             print(self.column("Virtual Memory:"))
-            total_virtual_mem = str(psutil.virtual_memory()[0]) + " Total Virtual Memory"
-            available_virtual_mem = str(psutil.virtual_memory()[1]) + " Available Virtual Memory"
-            percent_virtual_mem = str(psutil.virtual_memory()[2]) + " Percent Virtual Memory"
             used_virtual_mem = str(psutil.virtual_memory()[3]) + " Used Virtual Memory"
             free_virtual_mem = str(psutil.virtual_memory()[4]) + " Free Virtual Memory"
-            active_virtual_mem = str(psutil.virtual_memory()[5]) + " Active Virtual Memory"
-            inactive_virtual_mem = str(psutil.virtual_memory()[6]) + " Inactive Virtual Memory"
-            print(self.column(total_virtual_mem))
-            print(self.column(available_virtual_mem))
-            print(self.column(percent_virtual_mem))
             print(self.column(used_virtual_mem))
             print(self.column(free_virtual_mem))
-            print(self.column(active_virtual_mem))
-            print(self.column(inactive_virtual_mem))
             print(self.column(" "))
             print(self.column("Swap Memory:"))
             total_swap_mem = str(psutil.swap_memory()[0]) + " Total Swap Memory"
@@ -89,7 +80,38 @@ class Main:
             print(self.column(total_swap_mem))
             print(self.column(used_swap_mem))
             print(self.column(free_swap_mem))
-            
+        
+        #Need fix only to show particular partition not in the whole row 
+        elif choice == "3":
+            print(self.column("Disk Partition: "))
+            device_disk_part = str(psutil.disk_partitions()) + " Device Disks Partitions"
+            print(self.column(device_disk_part))
+        
+        elif choice == "4":
+            print(self.column("Packet State:"))
+            packets_sent = str(psutil.net_io_counters()[2]) + " Bytes Send"
+            packets_receive = str(psutil.net_io_counters()[3]) + " Bytes Send"            
+            print(self.column(packets_sent))
+            print(self.column(packets_receive))
+            print(self.column(" "))
+            print(self.column("Network Connections:"))
+            #Same as the diskparts only show the particular thing
+            net_con = str(psutil.net_connections())
+            print(self.column(net_con))
+            print(self.column(" "))
+            print(self.column("Ip Adresses:"))
+            ip_addr = str(psutil.net_if_addrs())
+            print(self.column(ip_addr))
+            print(self.column(" "))
+            print(self.column("Network Stats:"))
+            net_stat = str(psutil.net_if_stats())
+            print(self.column(net_stat))
 
+
+
+
+
+            
+            
 
 
