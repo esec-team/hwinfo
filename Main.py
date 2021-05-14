@@ -83,9 +83,10 @@ class Main:
         
         #Need fix only to show particular partition not in the whole row 
         elif choice == "3":
-            print(self.column("Disk Partition: "))
-            device_disk_part = str(psutil.disk_partitions()) + " Device Disks Partitions"
-            print(self.column(device_disk_part))
+            print(self.column("All disk partitions: "))
+            all_partitions = psutil.disk_partitions()
+            for partition in all_partitions:
+                print(self.column(f"{partition.device} {partition.fstype}"))
         
         elif choice == "4":
             print(self.column("Packet State:"))
