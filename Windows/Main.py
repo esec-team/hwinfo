@@ -12,7 +12,7 @@ class Main:
     def test(self):
         print()
         print()
-        print(self.center("Linux PC Analyzer"))
+        print(self.center("Windows PC Analyzer"))
         print()
         print(self.center("Created by @ Esec Team 2021"))
         print()
